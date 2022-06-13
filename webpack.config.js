@@ -1,70 +1,10 @@
-const path = require('path');
-const PORT = 9000;
-const webpack = require('webpack');
-const mode = process.env.NODE_ENV || 'development';
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { merge } = require('webpack-merge');
+const { argv } = require('yargs');
 
-module.exports = {
-  mode,
+const commonConfig = require('./webpack/common');
 
-  entry: {
-    main: path.join(__dirname, 'src', 'index.tsx'),
-  },
+module.exports = () => {
+  const envConfig = require(`./webpack/${argv.env}.js`);
 
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
-    modules: ['node_modules'],
-    extensions: ['.js', '.ts', '.jsx', '.tsx'],
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
-      },
-      {
-        test: /\.(sc|c|sa)ss$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(jpe?g|png|gif|mp3|svg|webg)$/,
-        use: ['file-loader'],
-      },
-    ],
-  },
-
-  plugins: [
-    new HtmlWebpackPlugin({ template: path.join(__dirname, 'public', 'index.html') }),
-    new ReactRefreshWebpackPlugin(),
-    new webpack.ProgressPlugin(),
-    new webpack.ProvidePlugin({ React: 'react' }),
-  ],
-
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
-
-  devServer: {
-    client: {
-      overlay: {
-        errors: true,
-        warnings: false,
-      },
-      progress: true,
-    },
-    compress: true,
-    historyApiFallback: true,
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    open: true,
-    port: PORT,
-  },
+  return merge(commonConfig, envConfig);
 };
