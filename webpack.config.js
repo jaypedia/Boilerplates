@@ -25,24 +25,7 @@ module.exports = {
       {
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  targets: '> 0.25%, not dead',
-                  useBuiltIns: 'usage',
-                  corejs: { version: 3, proposals: true },
-                },
-              ],
-              '@babel/preset-react',
-              '@babel/preset-typescript',
-            ],
-            plugins: ['react-refresh/babel', 'styled-components'],
-          },
-        },
+        use: ['babel-loader'],
       },
       {
         test: /\.(sc|c|sa)ss$/,
