@@ -59,7 +59,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
     "import/extensions": ["error", "never", { "png": "always" }],
     "import/prefer-default-export": "off",
-    "allowForLoopAfterthoughts": true
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   },
   "settings": {
     "import/resolver": {
