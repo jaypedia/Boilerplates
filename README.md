@@ -1,2 +1,1 @@
-# react-boilerplate
-Boilerplate of a React App with TypeScript
+# Vite boilerplate for React project
