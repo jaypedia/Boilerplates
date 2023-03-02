@@ -14,7 +14,6 @@ dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/* 
 .idea
 .DS_Store
 *.suo
@@ -33,3 +32,6 @@ dist-ssr
 !.yarn/versions
 .pnp.cjs
 .pnp.loader.mjs
+
+# eslint
+.eslintcache
