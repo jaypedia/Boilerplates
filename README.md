@@ -1,1 +1,1 @@
-# React + Vite + Chakra Boilerplate
+# React + Vite + MUI + Chart Boilerplate
