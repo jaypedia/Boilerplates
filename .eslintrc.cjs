@@ -15,7 +15,6 @@ module.exports = {
     'airbnb',
     'plugin:jsx-a11y/recommended',
     'plugin:import/typescript',
-    'plugin:storybook/recommended',
     'prettier',
   ],
   plugins: ['react', '@typescript-eslint', 'import'],
