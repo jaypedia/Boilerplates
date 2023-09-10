@@ -1,3 +1,1 @@
-# Vite boilerplate for React project
-
-- Without storybook
+# Vite boilerplate with React Hook Form
